@@ -8,17 +8,17 @@ import { Members } from '../mock-members';
   styleUrls: ['./members.component.css']
 })
 export class MembersComponent implements OnInit {
+  
   selectedMember: Member;
-
-  onSelect(member: Member): void {
-    this.selectedMember = member;
-  }
-
   members = Members;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelect(member: Member): void {
+    this.selectedMember = member;
   }
 
 }
