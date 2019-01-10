@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Member }  from '../member';
-import { Members } from '../mock-members';
+import { MemberService } from '../member.service';
 
 @Component({
   selector: 'app-members',
@@ -10,15 +10,20 @@ import { Members } from '../mock-members';
 export class MembersComponent implements OnInit {
   
   selectedMember: Member;
-  members = Members;
+  members: Member[];
 
-  constructor() { }
+  constructor(private memberService: MemberService) { }
 
   ngOnInit() {
+    this.getMembers();
   }
 
   onSelect(member: Member): void {
     this.selectedMember = member;
+  }
+
+  getMembers(): void {
+    this.members = this.memberService.getMembers();
   }
 
 }
