@@ -13,7 +13,13 @@ export class MemberService {
 
   getMembers(): Observable<Member[]> {
   	// TODO: send the message _after_ fetching the heroes
-  	this.messageService.add('HeroService: fetched heroes');
+  	this.messageService.add('MemberService: fetched members');
     return of(Members);
+  }
+
+  getMember(id: number): Observable<Member> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`MemberService: fetched member id=${id}`);
+    return of(Members.find(member => member.id === id));
   }
 }
