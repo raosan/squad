@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Members } from './mock-members';
+import { Member } from './member';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
