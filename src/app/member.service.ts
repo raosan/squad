@@ -94,4 +94,16 @@ export class MemberService {
     );
   }
 
+  /* GET heroes whose name contains search term */
+  searchMembers(term: string): Observable<Member[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Member[]>(`${this.membersUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found members matching "${term}"`)),
+      catchError(this.handleError<Member[]>('searchMembers', []))
+    );
+  }
+
 }
